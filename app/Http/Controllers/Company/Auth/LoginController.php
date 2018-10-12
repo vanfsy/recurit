@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Company\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
-class CompanyLoginController extends Controller
+class LoginController extends Controller
 {
     use AuthenticatesUsers;
     /**
@@ -34,11 +34,17 @@ class CompanyLoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.company_login');
+        return view('company.auth.login');
     }
 
     protected function guard()
     {
         return Auth::guard('company');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('company')->logout();
+        return redirect('/company/login');
     }
 }

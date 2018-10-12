@@ -20,12 +20,12 @@ return [
 
     'admins' => [
         'driver' => 'eloquent',
-        'model' => App\Admin::class,
+        'model' => App\Models\Admin::class,
     ],
 
     'companies' => [
         'driver' => 'eloquent',
-        'model' => App\Company::class,
+        'model' => App\Models\Company::class,
     ],
 
     /*
@@ -60,17 +60,9 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'admin-api' => [
-            'driver' => 'token',
-            'provider' => 'admins',
-        ],
 
         'company' => [
             'driver' => 'session',
-            'provider' => 'companies',
-        ],
-        'company-api' => [
-            'driver' => 'token',
             'provider' => 'companies',
         ],
     ],
@@ -95,7 +87,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [
@@ -105,12 +97,12 @@ return [
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
+            'model' => App\Models\Admin::class,
         ],
 
         'companies' => [
             'driver' => 'eloquent',
-            'model' => App\Company::class,
+            'model' => App\Models\Company::class,
         ],
     ],
 

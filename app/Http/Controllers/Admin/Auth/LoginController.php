@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
-class AdminLoginController extends Controller
+class LoginController extends Controller
 {
 	use AuthenticatesUsers;
     /**
@@ -34,12 +34,19 @@ class AdminLoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.admin_login');
+        return view('admin.auth.login');
     }
 
     protected function guard()
     {
         return Auth::guard('admin');
     }
-    
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+
+        return redirect('/admin/login');
+    }
+
 }

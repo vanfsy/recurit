@@ -1,19 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 /**
- *	use Illuminate\Database\Eloquent\Model;
+ * 'use Illuminate\Database\Eloquent\Model;'
  */
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Authenticatable
+class Company extends Authenticatable
 {
     use Notifiable;
 	
 	// The authentication guard for admin
-    protected $guard = 'admin';
+    protected $guard = 'company';
      /**
       * The attributes that are mass assignable.
       *

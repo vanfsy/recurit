@@ -25,16 +25,16 @@ Route::get('/', function () {
 });
 
 
-Route::prefix('admin')->group(function() {
-    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-    Route::get('/dashboard', 'AdminController@dashboard')->name('admin.home');
-});
+//Route::prefix('admin')->group(function() {
+//    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+//    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
+//    Route::get('/dashboard', 'AdminController@dashboard')->name('admin.home');
+//});
 
 
-Route::prefix('company')->group(function() {
-    Route::get('/login', 'Auth\CompanyLoginController@showLoginForm')->name('company.login');
-    Route::post('/login', 'Auth\CompanyLoginController@login')->name('company.login.submit');
-    Route::get('/dashboard', 'CompanyController@dashboard')->name('company.home');
-});
+//Route::prefix('company')->group(function() {
+//    Route::get('/login', 'Auth\CompanyLoginController@showLoginForm')->name('company.login');
+//    Route::post('/login', 'Auth\CompanyLoginController@login')->name('company.login.submit');
+//    Route::get('/dashboard', 'CompanyController@dashboard')->name('company.home');
+//});
 

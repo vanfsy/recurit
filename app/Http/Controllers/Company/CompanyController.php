@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Company;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class AdminController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -13,17 +14,16 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth:company');
     }
-    
+
     /**
-     * Show the Admin dashboard.
+     * Show the Company dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function dashboard()
     {
-        return view('admin.home');
+        return view('company.home');
     }
-
 }
