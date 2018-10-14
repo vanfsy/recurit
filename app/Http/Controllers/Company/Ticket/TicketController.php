@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Company;
+namespace App\Http\Controllers\Company\Ticket;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CompanyController extends Controller
+class TicketController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -18,22 +18,22 @@ class CompanyController extends Controller
     }
 
     /**
-     * Show the Company dashboard.
+     * Show the company ticket purchase.
      *
      * @return \Illuminate\Http\Response
      */
-    public function dashboard()
+    public function purchase()
     {
-        return view('company.home');
+        return view('company.ticket.purchase');
     }
 
     /**
-     * Show the company admin's registration.
+     * Show the company ticket management.
      *
      * @return \Illuminate\Http\Response
      */
-    public function showRegistrationForm()
+    public function management()
     {
-        return view('company.registration');
+        return view('company.ticket.management');
     }
 }

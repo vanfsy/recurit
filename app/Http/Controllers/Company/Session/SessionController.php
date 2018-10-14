@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Company;
+namespace App\Http\Controllers\Company\Session;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CompanyController extends Controller
+class SessionController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -18,22 +18,22 @@ class CompanyController extends Controller
     }
 
     /**
-     * Show the Company dashboard.
+     * Show the company session list.
      *
      * @return \Illuminate\Http\Response
      */
-    public function dashboard()
+    public function index()
     {
-        return view('company.home');
+        return view('company.session.home');
     }
 
     /**
-     * Show the company admin's registration.
+     * Show the company session detail.
      *
      * @return \Illuminate\Http\Response
      */
-    public function showRegistrationForm()
+    public function detail()
     {
-        return view('company.registration');
+        return view('company.session.detail');
     }
 }
