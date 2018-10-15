@@ -13,11 +13,10 @@ class CompanySeeder extends Seeder
     {
         DB::table('companies')->insert([
             'name' => 'PP IT Company',
+            'manager_name' => 'Yaoki',
             'email' => 'ppit@gmail.com',
+            'tel' => '+18845645312132',
             'password' => bcrypt('secret'),
-            'company_type' => 'Corporation',
-            'telephone' => '+18845645312132',
-            'url' => 'www.ppit.com',
         ]);
     }
 }

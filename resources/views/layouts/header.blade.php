@@ -17,6 +17,8 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <form class="navbar-form navbar-left header-search c-form-search">
           <div class="form-group"> <input type="text" class="form-control" placeholder="学校名などキーワード検索"> </div> <button type="submit"><i class="c-icon c-icon-form-search"></i><span class="hidden">検索</span></button> </form>
+
+        @if ( isset($student_search_enabled) && $student_search_enabled )
         <ul class="nav navbar-nav yamm">
           <li class="dropdown yamm-fw"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">絞り込み <i class="c-icon c-icon-header-dropdown-arrow"></i></a>
             <ul class="dropdown-menu yamm-dropdown-menu">
@@ -43,45 +45,43 @@
                         <div class="header-detail-list">
                           <div class="header-detail-list-hd">学歴</div>
                           <ul class="header-detail-list-form">
-                            <li> <label class="header-detail-check"><input type="checkbox" ><span>Sランク（早慶上智以上）</span></label> </li>
-                            <li> <label class="header-detail-check"><input type="checkbox"  checked><span>Aランク（GMARCHレベル）</span></label> </li>
-                            <li> <label class="header-detail-check"><input type="checkbox" ><span>Bランク（日東駒専レベル）</span></label> </li>
-                            <li> <label class="header-detail-check"><input type="checkbox" ><span>Cランク（大東亜帝国レベル）</span></label> </li>
-                            <li> <label class="header-detail-check"><input type="checkbox" ><span>その他</span></label> </li>
+                            @foreach ($codes['academies'] as $academy)
+                                <li> <label class="header-detail-check"><input type="checkbox" ><span>{{ $academy->title }}</span></label> </li>
+                            @endforeach
                           </ul>
                         </div>
                         <div class="header-detail-list">
                           <div class="header-detail-list-hd">学年</div>
                           <ul class="header-detail-list-form">
-                            <li> <label class="header-detail-check"><input type="checkbox" ><span>1年生</span></label> </li>
-                            <li> <label class="header-detail-check"><input type="checkbox"  checked><span>2年生</span></label> </li>
-                            <li> <label class="header-detail-check"><input type="checkbox" ><span>3年生</span></label> </li>
-                            <li> <label class="header-detail-check"><input type="checkbox" ><span>4年生</span></label> </li>
+                            @foreach ($codes['graduate_years'] as $year)
+                                <li> <label class="header-detail-check"><input type="checkbox" ><span>{{ $year }}</span></label> </li>
+                            @endforeach
                           </ul>
                         </div>
                         <div class="header-detail-list">
                           <div class="header-detail-list-hd">地域</div>
                           <ul class="header-detail-list-form">
                             <li> <span class="header-detail-select"><select>
-            <option value="">地域を選択</option>
-            <option value="">地域を選択</option>
-          </select></span> </li>
+                                <option value="">地域を選択</option>
+                                <option value="">地域を選択</option>
+                              </select></span>
+                            </li>
                           </ul>
                         </div>
                         <div class="header-detail-list">
                           <div class="header-detail-list-hd">性別</div>
                           <ul class="header-detail-list-form">
-                            <li> <label class="header-detail-check"><input type="checkbox" ><span>男性</span></label> </li>
-                            <li> <label class="header-detail-check"><input type="checkbox"  checked><span>女性</span></label> </li>
+                            @foreach ($codes['gender'] as $gender)
+                                <li> <label class="header-detail-check"><input type="checkbox" ><span>{{ $gender }}</span></label> </li>
+                            @endforeach
                           </ul>
                         </div>
                         <div class="header-detail-list">
                           <div class="header-detail-list-hd">専攻</div>
                           <ul class="header-detail-list-form">
-                            <li> <label class="header-detail-check"><input type="checkbox" ><span>文系</span></label> </li>
-                            <li> <label class="header-detail-check"><input type="checkbox"  checked><span>理系</span></label> </li>
-                            <li> <label class="header-detail-check"><input type="checkbox" ><span>服飾</span></label> </li>
-                            <li> <label class="header-detail-check"><input type="checkbox" ><span>美術</span></label> </li>
+                            @foreach ($codes['major'] as $major)
+                                <li> <label class="header-detail-check"><input type="checkbox" ><span>{{ $major->name }}</span></label> </li>
+                            @endforeach
                           </ul>
                         </div>
                         <div class="header-detail-list">
@@ -103,31 +103,17 @@
                         <div class="header-detail-list">
                           <div class="header-detail-list-hd">学歴</div>
                           <ul class="header-detail-list-form">
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>金融</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox"  checked><span>IT</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>アパレル</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>金融</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>IT</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>アパレル</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>金融</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>IT</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>アパレル</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>金融</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>IT</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>アパレル</span></label> </li>
+                            @foreach ($codes['industry_tags'] as $interest)
+                                <li> <label class="header-detail-tag"><input type="checkbox" ><span>{{ $interest->name }}</span></label> </li>
+                            @endforeach
                           </ul>
                         </div>
                         <div class="header-detail-list">
                           <div class="header-detail-list-hd">パーソナル</div>
                           <ul class="header-detail-list-form">
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>＃アイディアマン</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox"  checked><span>＃真面目にコツコツ</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>＃なんでもやってみたい</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>＃インターンを探している</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>＃ポジティブ</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>＃流行に敏感</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>＃なんでa＃何かつくることが好きもやってみたい</span></label> </li>
-                            <li> <label class="header-detail-tag"><input type="checkbox" ><span>＃リーダー気質</span></label> </li>
+                            @foreach ($codes['personal_tags'] as $personal)
+                                <li> <label class="header-detail-tag"><input type="checkbox" ><span>{{ $personal->name }}</span></label> </li>
+                            @endforeach
                           </ul>
                         </div>
                         <div class="c-buttons"> <button class="c-button c-button-01 c-button-search"><i class="c-icon"></i>検　索</button> </div>
@@ -141,6 +127,8 @@
             </ul>
           </li>
         </ul>
+        @endif
+
         <ul class="nav navbar-nav navbar-right header-nav">
           <li><a href="#"><i class="c-icon c-icon-header-nav-like"></i>お気に入り</a></li>
           <li><a href="#"><i class="c-icon c-icon-header-nav-message"></i>メッセージ</a></li>

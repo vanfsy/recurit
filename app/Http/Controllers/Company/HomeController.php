@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CompanyController extends Controller
+class HomeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -14,7 +14,7 @@ class CompanyController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:company');
+        $this->middleware('auth:company')->except('showSignupForm');
     }
 
     /**
@@ -28,12 +28,12 @@ class CompanyController extends Controller
     }
 
     /**
-     * Show the company admin's registration.
+     * Show the company signup.
      *
      * @return \Illuminate\Http\Response
      */
-    public function showRegistrationForm()
+    public function showSignupForm()
     {
-        return view('company.registration');
+        return view('company.signup');
     }
 }

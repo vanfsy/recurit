@@ -35,7 +35,7 @@
   <!-- footer -->
     @yield('footer')
   <!-- / footer -->
-  <script type="{{ asset('js/script.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 
     @yield('scripts')
   </body>

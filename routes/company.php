@@ -20,6 +20,10 @@ Route::group(['prefix' => 'company', 'namespace' => 'Company'], function () {
     Route::get('/', function () {
         return redirect()->route('company.home');
     });
+    
+    Route::get('signup', 'HomeController@showSignupForm');
+    Route::post('signup', 'HomeController@showSignupForm')->name('company.signup');
+    
     Route::get('login', 'Auth\LoginController@showLoginForm');
     Route::post('login', 'Auth\LoginController@login')->name('company.login');
     Route::get('logout', 'Auth\LoginController@logout');
@@ -31,16 +35,22 @@ Route::group(['prefix' => 'company', 'namespace' => 'Company'], function () {
 |--------------------------------------------------------------------------
 */
 Route::group(['prefix' => 'company', 'namespace' => 'Company', 'middleware' => 'auth:company'], function () {
-    Route::get('/dashboard', 'CompanyController@dashboard')->name('company.home');
-	Route::get('/registration', 'CompanyController@showRegistrationForm')->name('company.registration');
+    Route::get('/dashboard', 'HomeController@dashboard')->name('company.home');
     
+    Route::resources([
+	    'student' 	=> 'Student\StudentController',
+	    'session' 	=> 'Session\SessionController',
+	    'event' 	=> 'Event\EventController',
+	    'ticket' 	=> 'Ticket\TicketController',
+	]);
+
 	/*
 	|--------------------------------------------------------------------------
 	| Company Student
 	|--------------------------------------------------------------------------
 	*/
-	Route::group(['prefix' => 'student'], function () {
-		Route::get('/', 'Student\StudentController@index')->name('company.student.home');
+	Route::group(['prefix' => 'students'], function () {
+	    Route::get('/search', 'Student\StudentController@search')->name('company.search');
 	});
 
 	/*
@@ -48,28 +58,18 @@ Route::group(['prefix' => 'company', 'namespace' => 'Company', 'middleware' => '
 	| Company Event
 	|--------------------------------------------------------------------------
 	*/
-	Route::group(['prefix' => 'event'], function () {
-		Route::get('/', 'Event\EventController@index')->name('company.event.home');
-	});
-
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Company Session
 	|--------------------------------------------------------------------------
 	*/
-	Route::group(['prefix' => 'session'], function () {
-		Route::get('/', 'Session\SessionController@index')->name('company.session.home');
-	    Route::get('detail', 'Session\SessionController@detail')->name('company.session.detail');
-	});
-
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Company Ticket
 	|--------------------------------------------------------------------------
 	*/
-	Route::group(['prefix' => 'ticket'], function () {
-		Route::get('purchase', 'Ticket\TicketController@purchase')->name('company.ticket.purchase');
-	    Route::get('management', 'Ticket\TicketController@management')->name('company.ticket.management');
-	});
+	
 });
 

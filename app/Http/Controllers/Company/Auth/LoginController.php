@@ -47,4 +47,5 @@ class LoginController extends Controller
         Auth::guard('company')->logout();
         return redirect('/company/login');
     }
+    
 }

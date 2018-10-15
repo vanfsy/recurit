@@ -27,4 +27,14 @@ class HomeController extends Controller
         return view('admin.home');
     }
 
+    /**
+     * Show the admin's company registration.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showCompanyRegistration()
+    {
+        return view('admin.company.registration');
+    }
+
 }
